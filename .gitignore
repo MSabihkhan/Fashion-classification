@@ -4,3 +4,4 @@ venv/
 *.h5
 Screenshots/
 models/
+metrics.json
