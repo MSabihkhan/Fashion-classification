@@ -2,7 +2,7 @@ stages:
   prepare:
     cmd: python src/prepare.py
     deps:
-      - src/download_data.py
+      - src/prepare.py
     outs:
       - data/raw/fashion_mnist.npz
 
