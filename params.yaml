@@ -6,3 +6,10 @@ preprocess:
   test_size: 0.2   # fraction of the training data held out for validation
   seed: 42         # random seed so the split is reproducible
  
+
+train:
+  dense_units: 128      # neurons in the hidden Dense layer
+  dropout_rate: 0.2     # fraction of units randomly dropped during training
+  learning_rate: 0.001  # Adam optimizer step size
+  epochs: 10            # full passes over the training data
+  batch_size: 64        # samples per gradient update

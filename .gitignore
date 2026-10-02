@@ -3,3 +3,4 @@ venv/
 .dvc/cache 
 *.h5
 Screenshots/
+models/
