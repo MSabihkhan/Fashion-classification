@@ -1,0 +1,8 @@
+# params.yaml
+# Central configuration for the Fashion-MNIST pipeline.
+# Scripts read this file with yaml.safe_load(); nothing here is hardcoded in src/.
+ 
+preprocess:
+  test_size: 0.2   # fraction of the training data held out for validation
+  seed: 42         # random seed so the split is reproducible
+ 
