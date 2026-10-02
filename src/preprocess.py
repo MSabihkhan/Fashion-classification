@@ -18,8 +18,8 @@ def main(raw_path: Path, out_dir: Path, params_path: Path) -> None:
     x_test, y_test = data["x_test"], data["y_test"]
 
     # Normalize to [0, 1]
-    x_train = x_train.astype("float32") / 255.0
-    x_test = x_test.astype("float32") / 255.0
+    x_train = x_train.astype("float32") / 127.5 - 1.0
+    x_test = x_test.astype("float32") / 127.5 - 1.0
 
     # Validation split from the training data
     x_tr, x_val, y_tr, y_val = train_test_split(
