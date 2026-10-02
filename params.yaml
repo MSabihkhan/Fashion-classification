@@ -8,7 +8,7 @@ preprocess:
  
 
 train:
-  dense_units: 256      # neurons in the hidden Dense layer
+  dense_units: 512      # neurons in the hidden Dense layer
   dropout_rate: 0.2     # fraction of units randomly dropped during training
   learning_rate: 0.001  # Adam optimizer step size
   epochs: 20            # full passes over the training data

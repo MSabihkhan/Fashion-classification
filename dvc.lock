@@ -1,0 +1,85 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: python src/prepare.py
+    deps:
+    - path: src/prepare.py
+      hash: md5
+      md5: bf4775d826b1697a931717eecd5a0b59
+      size: 889
+    outs:
+    - path: data/raw/fashion_mnist.npz
+      hash: md5
+      md5: 62d355ed81611a9ca2a5a1fc59089fa1
+      size: 31220545
+  preprocess:
+    cmd: python src/preprocess.py
+    deps:
+    - path: data/raw/fashion_mnist.npz
+      hash: md5
+      md5: 62d355ed81611a9ca2a5a1fc59089fa1
+      size: 31220545
+    - path: src/preprocess.py
+      hash: md5
+      md5: dce19393cf394a425a9c89473ffe9427
+      size: 1710
+    params:
+      params.yaml:
+        preprocess.seed: 42
+        preprocess.test_size: 0.2
+    outs:
+    - path: data/processed/fashion_mnist_processed.npz
+      hash: md5
+      md5: 385f069a91678e3d5f8eff770ea7f0f8
+      size: 45199616
+  train:
+    cmd: python src/train.py
+    deps:
+    - path: data/processed/fashion_mnist_processed.npz
+      hash: md5
+      md5: 385f069a91678e3d5f8eff770ea7f0f8
+      size: 45199616
+    - path: src/train.py
+      hash: md5
+      md5: 43e3b364af6ce51abaa1027cf3b801f3
+      size: 1958
+    params:
+      params.yaml:
+        train.batch_size: 64
+        train.dense_units: 512
+        train.dropout_rate: 0.2
+        train.epochs: 20
+        train.learning_rate: 0.001
+    outs:
+    - path: models/history.csv
+      hash: md5
+      md5: 540caa8e4e3253e653bcd60d939d35df
+      size: 1575
+    - path: models/model.h5
+      hash: md5
+      md5: edb7a0acb62e22b0dfc81e0aac7456ba
+      size: 4910168
+  evaluate:
+    cmd: python src/evaluate.py
+    deps:
+    - path: data/processed/fashion_mnist_processed.npz
+      hash: md5
+      md5: 385f069a91678e3d5f8eff770ea7f0f8
+      size: 45199616
+    - path: models/model.h5
+      hash: md5
+      md5: edb7a0acb62e22b0dfc81e0aac7456ba
+      size: 4910168
+    - path: src/evaluate.py
+      hash: md5
+      md5: f792923517e5e42a95703d8750f5549a
+      size: 2656
+    outs:
+    - path: metrics.json
+      hash: md5
+      md5: e53deb8c6c166ced99789241d4ad2371
+      size: 1581
+    - path: models/confusion_matrix.png
+      hash: md5
+      md5: f985e32dbe40ab1b8a059ea857473cd8
+      size: 105184
