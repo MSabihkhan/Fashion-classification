@@ -21,8 +21,8 @@ stages:
       size: 31220545
     - path: src/preprocess.py
       hash: md5
-      md5: dce19393cf394a425a9c89473ffe9427
-      size: 1710
+      md5: 8d4cbd244df75b8ce6703fe7c52ccd84
+      size: 1803
     params:
       params.yaml:
         preprocess.seed: 42
@@ -30,8 +30,8 @@ stages:
     outs:
     - path: data/processed/fashion_mnist_processed.npz
       hash: md5
-      md5: 385f069a91678e3d5f8eff770ea7f0f8
-      size: 45199616
+      md5: 50b3b369fa3e2b7d6fe8aad03653b0b9
+      size: 52162195
   train:
     cmd: python src/train.py
     deps:
